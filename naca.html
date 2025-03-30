@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación Nombre</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+        }
+        .animation {
+            font-size: 100px;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s;
+            background: linear-gradient(45deg, red, yellow, blue, green, orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorChange 2s infinite alternate;
+            display: none;
+        }
+        .message {
+            font-size: 18px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 1s;
+            background: linear-gradient(45deg, pink, lightblue, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s infinite alternate;
+            display: none;
+        }
+        @keyframes colorChange {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0.5;
+                transform: translateY(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Ingresa tu nombre</h1>
+    <input type="text" id="nameInput" placeholder="Escribe tu nombre">
+    <div id="animationText" class="animation">NACA</div>
+    <div id="messageText" class="message">Mentira mi amor, tú y yo nos vamos a casar, ailoviu</div>
+    
+    <script>
+        document.getElementById('nameInput').addEventListener('input', function() {
+            let name = this.value.trim();
+            let animationText = document.getElementById('animationText');
+            let messageText = document.getElementById('messageText');
+            
+            if (name.toLowerCase() === 'carla') {
+                animationText.style.display = 'block';
+                animationText.style.opacity = '1';
+                messageText.style.display = 'block';
+                messageText.style.opacity = '1';
+            } else {
+                animationText.style.display = 'none';
+                messageText.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
